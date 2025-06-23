@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.br.apijava.api.Model.AlunoModel;
 import com.br.apijava.api.Repository.AlunoRepository;
+import com.br.apijava.api.Repository.PessoaRepository;
 
 @RestController
 @RequestMapping("/alunos")
@@ -22,9 +23,22 @@ public class AlunoController
     @Autowired
     private AlunoRepository alunoRepository;
 
+    @Autowired
+    private PessoaRepository pessoaRepository;
+
     @PostMapping("/inserir")
     public ResponseEntity<AlunoModel> inserir(@RequestBody AlunoModel aluno) 
     {
+        
+        if (aluno.getPessoa() != null && aluno.getPessoa().getIdPessoa() != null) {
+            var pessoaExistente = pessoaRepository.findById(aluno.getPessoa().getIdPessoa());
+            if (pessoaExistente.isPresent()) {
+                aluno.setPessoa(pessoaExistente.get());
+            } else {
+                return ResponseEntity.badRequest().build();
+            }
+        }
+
         AlunoModel salvo = alunoRepository.save(aluno);
         return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
@@ -34,4 +48,3 @@ public class AlunoController
         return alunoRepository.findAll();
     }
 }
-
