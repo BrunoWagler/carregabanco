@@ -15,6 +15,8 @@ import com.br.apijava.api.Model.AlunoModel;
 import com.br.apijava.api.Repository.AlunoRepository;
 import com.br.apijava.api.Repository.PessoaRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/alunos")
 public class AlunoController 
@@ -27,7 +29,7 @@ public class AlunoController
     private PessoaRepository pessoaRepository;
 
     @PostMapping("/inserir")
-    public ResponseEntity<AlunoModel> inserir(@RequestBody AlunoModel aluno) 
+    public ResponseEntity<AlunoModel> inserir( @Valid @RequestBody AlunoModel aluno) 
     {
 
     if (aluno.getIdPessoa() != null) 
