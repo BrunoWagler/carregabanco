@@ -29,22 +29,22 @@ public class AlunoController
     @PostMapping("/inserir")
     public ResponseEntity<AlunoModel> inserir(@RequestBody AlunoModel aluno) 
     {
-        
-        if (aluno.getPessoa() != null && aluno.getPessoa().getIdPessoa() != null) {
-            var pessoaExistente = pessoaRepository.findById(aluno.getPessoa().getIdPessoa());
-            if (pessoaExistente.isPresent()) {
-                aluno.setPessoa(pessoaExistente.get());
-            } else {
-                return ResponseEntity.badRequest().build();
-            }
-        }
 
-        AlunoModel salvo = alunoRepository.save(aluno);
-        return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
+    if (aluno.getIdPessoa() != null) 
+    {
+        pessoaRepository.findById(aluno.getIdPessoa()).ifPresent(aluno::setPessoa);
     }
+    
+    AlunoModel salvo = alunoRepository.save(aluno);
+    return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
+}
+
 
     @GetMapping("/todos")
-    public List<AlunoModel> listarTodos() {
+    public List<AlunoModel> listarTodos() 
+    {
         return alunoRepository.findAll();
     }
+
+    
 }
