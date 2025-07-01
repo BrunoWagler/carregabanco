@@ -50,13 +50,13 @@ Pré-requisitos
 
 ### application.properties
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-server.port=8080
+spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco\
+spring.datasource.username=seu_usuario\
+spring.datasource.password=sua_senha\
+spring.jpa.hibernate.ddl-auto=update\
+spring.jpa.show-sql=true\
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect\
+server.port=8080\
 
 ## Executar com Maven
 * bash
