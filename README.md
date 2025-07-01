@@ -68,10 +68,10 @@ server.port=8080\
 ## A API ficará disponível em:
 
 * arduino
-*Copiar
-*Editar
-*http://localhost:8080
-*Use ferramentas como Postman ou Insomnia para testar os endpoints
+* Copiar
+* Editar
+* http://localhost:8080
+* Use ferramentas como Postman ou Insomnia para testar os endpoints
 
 
 
