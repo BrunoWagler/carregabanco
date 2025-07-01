@@ -1,18 +1,16 @@
 # 📘 API de Alunos e Pessoas
 
-API REST feita com Spring Boot para gerenciar dados de alunos e pessoas.
+API REST desenvolvida com Spring Boot para gerenciar dados de pessoas e alunos vinculados.
 
-## 🔧 Funcionalidades
+# 🔧 Funcionalidades
 
-### Pessoa
-
+## Pessoa
 - `GET /pessoas/todos` – Lista todas as pessoas
 - `POST /pessoas/inserir` – Cadastra uma nova pessoa
 - `PUT /pessoas/atualizar/{id}` – Atualiza dados de uma pessoa
 - `DELETE /pessoas/deletar/{id}` – Remove uma pessoa
 
-### Aluno
-
+## Aluno
 - `GET /alunos/todos` – Lista todos os alunos
 - `POST /alunos/inserir` – Cadastra um novo aluno
 - `PUT /alunos/atualizar/{id}` – Atualiza dados do aluno
@@ -21,26 +19,59 @@ API REST feita com Spring Boot para gerenciar dados de alunos e pessoas.
 - `GET /alunos/buscar/curso/{curso}` – Busca por curso
 - `GET /alunos/buscar/campus/{campus}` – Busca por campus
 
-## 🗃️ Dados
+# 🧾 Exemplos de JSON
 
-### Pessoa
+## Pessoa (POST/PUT)
+```json
+{
+  "nomeEstudante": "MICHELLE APADILHA SABATEL",
+  "idade": 29,
+  "sexo": "Feminino"
+}
+```
 
-- `nomeEstudante` (obrigatório)
-- `idade`
-- `sexo`
+## Aluno (POST/PUT)
+```json
+{
+  "campus": "Campus Corumbá",
+  "curso": "Sistemas de Informação",
+  "emailInstitucional": "michelle@ifms.edu.br",
+  "periodoEntrada": "2022.2",
+  "idPessoa": 2
+}
 
-### Aluno
+```
 
-- `campus` (obrigatório)
-- `curso` (obrigatório)
-- `emailInstitucional` (obrigatório)
-- `periodoEntrada` (obrigatório)
-- Outros: polo, coordenacao, situacao, idPessoa (referência para Pessoa)
+# ▶️ Como executar a API
+Pré-requisitos
+* Java 17+
+* Maven
+* PostgreSQL (ou H2 para testes)
 
-## ▶️ Como rodar
+### application.properties
 
-1. Configure seu banco (ex: PostgreSQL)
-2. Rode o projeto com:
+spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+server.port=8080
 
-```bash
-./mvnw spring-boot:run
+## Executar com Maven
+* bash
+* Copiar
+* Editar
+* mvn spring-boot:run
+
+# 🔗 Acesso
+## A API ficará disponível em:
+
+* arduino
+*Copiar
+*Editar
+*http://localhost:8080
+*Use ferramentas como Postman ou Insomnia para testar os endpoints
+
+
+
